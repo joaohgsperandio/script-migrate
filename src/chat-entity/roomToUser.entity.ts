@@ -1,6 +1,6 @@
 import { PrimaryColumn, Entity } from "typeorm";
 
-@Entity({ name: "_RoomToUsers" })
+@Entity({ name: "_RoomToUser" })
 export default class _RoomToUsers {
   @PrimaryColumn("uuid")
   A: string;

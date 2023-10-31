@@ -1,5 +1,6 @@
 import "reflect-metadata"
 import { DataSource } from "typeorm"
+import { SnakeNamingStrategy } from 'typeorm-naming-strategies';
 
 export const ChatDataSource = new DataSource({
     type: "postgres",
@@ -8,7 +9,7 @@ export const ChatDataSource = new DataSource({
     username: "postgres",
     password: "123",
     database: "chat",
-    synchronize: true,
+    synchronize: false,
     logging: false,
     entities: [`${__dirname}/chat-entity/*.entity.ts`],
     migrations: [],
@@ -22,9 +23,10 @@ export const ApiDataSource = new DataSource({
     username: "postgres",
     password: "123",
     database: "timofi",
-    synchronize: true,
+    synchronize: false,
     logging: false,
     entities: [`${__dirname}/api-entity/*.entity.ts`],
     migrations: [],
     subscribers: [],
+    namingStrategy: new SnakeNamingStrategy(),
 })

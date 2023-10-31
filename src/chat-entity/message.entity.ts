@@ -10,7 +10,7 @@ import {
 import Room from "./room.entity";
 import User from "./user.entity";
 
-@Entity({ name: "chat_messages" })
+@Entity({ name: "messages" })
 export default class Message {
   @PrimaryGeneratedColumn("uuid")
   id: string;

@@ -10,9 +10,6 @@ import {
   UpdateDateColumn,
   OneToMany,
 } from "typeorm";
-import Role from "./roles.entity";
-import Message from "./message.entity";
-import Notification from "./notification.entity";
 
 @Entity("users")
 export default class User extends BaseEntity {

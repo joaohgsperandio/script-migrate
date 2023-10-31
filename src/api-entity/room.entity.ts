@@ -1,8 +1,6 @@
 import { Column, Entity, JoinTable, ManyToMany, ManyToOne, OneToMany, PrimaryColumn } from "typeorm";
-import Message from "./message.entity";
-import User from "./user.entity";
 
-@Entity({ name: "rooms" })
+@Entity({ name: "chat_rooms" })
 export default class Room {
   @PrimaryColumn("uuid")
   id: string;

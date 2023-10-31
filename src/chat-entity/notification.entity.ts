@@ -1,7 +1,7 @@
 import { Entity, PrimaryColumn, Column, ManyToOne, JoinColumn } from "typeorm";
 import User from "./user.entity";
 
-@Entity({ name: "chat_notifications" })
+@Entity({ name: "notifications" })
 export default class Notification {
   @PrimaryColumn("uuid")
   id: string;
