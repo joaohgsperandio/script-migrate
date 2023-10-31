@@ -1,0 +1,22 @@
+{
+   "name": "script",
+   "version": "1.0.0",
+   "description": "",
+   "main": "index.js",
+   "scripts": {
+      "start": "ts-node src/index.ts",
+      "typeorm": "typeorm-ts-node-commonjs"
+   },
+   "author": "",
+   "license": "ISC",
+   "dependencies": {
+      "reflect-metadata": "^0.1.13",
+      "typeorm": "0.3.17",
+      "pg": "^8.4.0"
+   },
+   "devDependencies": {
+      "ts-node": "10.7.0",
+      "@types/node": "^16.11.10",
+      "typescript": "4.5.2"
+   }
+}
