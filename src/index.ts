@@ -26,7 +26,7 @@ ChatDataSource.initialize()
     chatUsers = (
       await ChatDataSource.manager.getRepository(ChatUser).find()
     ).reduce((prev, current) => {
-      return Object.assign(prev, { [current.id]: current })
+      return Object.assign(prev, { [current.id]: current });
     }, {});
 
     // Get all messages
@@ -52,7 +52,7 @@ ChatDataSource.initialize()
         apiUsers = (
           await ApiDataSource.manager.getRepository(ApiUser).find()
         ).reduce((prev, current) => {
-          return Object.assign(prev, { [current.email]: current })
+          return Object.assign(prev, { [current.email]: current });
         }, {});
         // Insert channels
         ApiDataSource.manager.getRepository(ApiChannel).save(channels);
@@ -69,30 +69,31 @@ ChatDataSource.initialize()
         ApiDataSource.manager.getRepository(ApiNotification).save(
           notifications.reduce((prev, notification) => {
             if (apiUsers[chatUsers[notification.userId].email]?.id) {
-              return prev.concat([{
-                ...notification,
-                userId: apiUsers[chatUsers[notification.userId].email]?.id,
-              }])
+              return prev.concat([
+                {
+                  ...notification,
+                  userId: apiUsers[chatUsers[notification.userId].email]?.id,
+                },
+              ]);
             }
             return prev;
           }, [])
         );
         // Insert roomToUsers
-        ApiDataSource.manager
-          .getRepository(ApiRoomToUsers)
-          .save(
-            roomToUsers.reduce((prev, roomToUser) => {
-              if (apiUsers[chatUsers[roomToUser.B].email]?.id) {
-                return prev.concat([{
-                  roomId: roomToUser.B,
+        ApiDataSource.manager.getRepository(ApiRoomToUsers).save(
+          roomToUsers.reduce((prev, roomToUser) => {
+            if (apiUsers[chatUsers[roomToUser.B].email]?.id) {
+              return prev.concat([
+                {
+                  roomId: roomToUser.A,
                   userId: apiUsers[chatUsers[roomToUser.B].email]?.id,
-                }])
-              }
-              return prev;
-            }, [])
-          );
+                },
+              ]);
+            }
+            return prev;
+          }, [])
+        );
       })
       .catch((error) => console.log(error));
   })
   .catch((error) => console.log(error));
-
